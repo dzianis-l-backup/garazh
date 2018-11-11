@@ -1,5 +1,6 @@
 const path = require('path');
-const miniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -23,4 +24,13 @@ module.exports = {
     ],
 
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      hash: true,
+      title: 'Todo Title',
+      myPageHeader: 'Todo App Header',
+      template: './src/index.html',
+      filename: './index.html',
+    }),
+  ],
 };
