@@ -28,7 +28,7 @@
   "scripts": {
     "start": "npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --mode development"
+    "dev": "webpack --mode development --watch"
   },
   "keywords": [],
   "author": "",
