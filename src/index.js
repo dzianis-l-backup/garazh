@@ -1,1 +1,3 @@
-console.log('Hello worlds');
+import appFunc from './components/app';
+
+appFunc();
