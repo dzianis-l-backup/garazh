@@ -1,5 +1,5 @@
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
@@ -17,18 +17,21 @@ module.exports = {
     rules: [
 
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
+        test: /\.js$/, // regex to find the files with respective extension
+        exclude: /node_modules/, // except the modules
         use: {
           loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
         },
       },
 
       {
         test: /\.scss$/,
         use: [
-          MiniCssExtractPlugin.loader,
-          // 'style-loader', // creates style nodes from JS strings
+          // MiniCssExtractPlugin.loader,
+          'style-loader', // creates style nodes from JS strings
           'css-loader', // translates CSS into CommonJS
           'sass-loader', // compiles Sass to CSS, using Node Sass by default
         ],
@@ -40,14 +43,14 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       hash: true,
-      title: 'Todo Title',
-      myPageHeader: 'Todo App Header',
+      title: 'Sandbox',
+      myPageHeader: 'Sandbox',
       template: './src/index.html',
       filename: './index.html',
     }),
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-    }),
+    // new MiniCssExtractPlugin({
+    //   filename: '[name].css',
+    // }),
     new webpack.ProvidePlugin({
       React: 'react',
       ReactDOM: 'react-dom',

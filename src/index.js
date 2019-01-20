@@ -1,3 +1,3 @@
-import appFunc from './components/app';
+import {App} from "./components/app/app";
 
-appFunc();
+ReactDOM.render(<App /> , document.getElementById("_app"))
