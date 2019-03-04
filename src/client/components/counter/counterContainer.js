@@ -1,8 +1,5 @@
 import {CounterView} from "./counterView"
 
-var a = 8;
-
-
 export class CounterContainer extends React.Component {
 
     constructor(props) {

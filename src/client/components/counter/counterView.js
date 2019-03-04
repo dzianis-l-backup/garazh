@@ -1,4 +1,3 @@
-
 export class CounterView extends React.Component {
 
     render() {
