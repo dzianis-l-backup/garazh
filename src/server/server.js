@@ -1,10 +1,10 @@
-const express = require('express');
-const { port } = require('../../config/server/serverConstants.js');
+import express from 'express';
+import { port } from '../config/server/serverConstants';
 
 const app = express();
 
 app.get('/api', (req, res) => {
-  console.log('get: /api')
+  console.log('get: /api');
   res.send('get: /api');
 });
 

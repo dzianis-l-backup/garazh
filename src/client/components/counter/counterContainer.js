@@ -10,14 +10,19 @@ export class CounterContainer extends React.Component {
         }
     }
 
-    handleChange = () => {
+    handleIncrement = () => {
+        this.setState(prevState => ({counter: ++prevState.counter}))
+    }
 
+    handleDecrement = () => {
+        this.setState(prevState => ({ counter: --prevState.counter }))
     }
 
     render() {
         return <CounterView
             counter={this.state.counter}
-            onChange={this.handleChange}
+            onIncrement={this.handleIncrement}
+            onDecrement={this.handleDecrement}
         />
     }
 

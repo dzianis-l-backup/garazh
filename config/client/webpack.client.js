@@ -1,21 +1,26 @@
 const path = require('path');
+
+/** plugins */
 const htmlWebpackPlugin = require('./plugins/webpackHtmlPlugin.js');
 const webpackProvidePlugin = require('./plugins/webpackProvidePlugin.js');
-
-
-/** rules */
-const webpackJsRule = require('../clientServer/webpackJsRule.js');
+ 
 const webpackScssRule = require('./rules/webpackScssRule.js');
+const webpackJsRule = require('../common/webpackJsRule.js');
+
+/** constants */
+const webpackClientConstants = require('./constants/webpackClientConstants.js');
+
+const relativeDestPath = `../../${webpackClientConstants.destinationDirName}`;
 
 const clientConfig = {
   target: 'web',
   entry: {
-    main: './src/client/index.js',
+    main: webpackClientConstants.entryRelativePath,
   },
   mode: 'development',
   output: {
-    path: path.resolve(__dirname, '../../dist'),
-    filename: 'main.client.js',
+    path: path.resolve(__dirname, relativeDestPath),
+    filename: 'app.client.js',
   },
   devtool: 'source-map',
   module: {
@@ -29,13 +34,18 @@ const clientConfig = {
     webpackProvidePlugin,
   ],
   devServer: {
-    contentBase: path.join(__dirname, '/dist'),
+    contentBase: path.join(__dirname, relativeDestPath),
     watchContentBase: true,
+    watchOptions: {
+      aggregateTimeout: 2000,
+      ignored: /node_modules/
+    },
     proxy: {
       '/api': {
         target: 'http://localhost:3000',
       },
     },
+    publicPath: '/bundled/',
     port: 3030,
     overlay: {
       warnings: true,

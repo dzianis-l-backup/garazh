@@ -1,5 +1,5 @@
 {
-  "name": "sandbox",
+  "name": "garazh",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -24,26 +24,28 @@
     "css-loader": "^1.0.1",
     "eslint": "^5.9.0",
     "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.4.5",
-    "node-sass": "^4.10.0",
+    "node-sass": "^4.12.0",
     "nodemon": "^1.18.10",
     "sass-loader": "^7.1.0",
     "scss-loader": "0.0.1",
     "style-loader": "^0.23.1",
     "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-dev-server": "^3.3.1",
+    "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "start": "npm run dev",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --mode development --watch",
-    "dev-server": "webpack-dev-server",
-    "server": "nodemon ./src/server/index.js"
+    "start": "npm run dev-server",
+    "dev-server": "webpack-dev-server --config ./config/client/webpack.client.js",
+    "server": "npm run compile-server && npm run run-server",
+    "compile-server": "webpack --mode=development ./config/server/webpack.server.js --watch",
+    "run-server": "nodemon --watch app_server",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
