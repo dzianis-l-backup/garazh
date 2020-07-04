@@ -1,3 +1,3 @@
-import {App} from "./components/app/app";
+import Root from './reduxTodos/reduxReddit/containers/root.js'
 
-ReactDOM.render(<App /> , document.getElementById("_app"))
+ReactDOM.render(<Root />, document.getElementById('_app'))

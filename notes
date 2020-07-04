@@ -1,0 +1,4 @@
+option cmd back - navigate back
+cmd + shift + u - terminal
+cmd + shift + p - change language mode - http - enables postman
+option + fn + f7 - search for all usages

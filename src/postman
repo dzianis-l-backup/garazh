@@ -1,0 +1,6 @@
+@baseUrl = https://www.reddit.com/r/backend.json
+
+
+###
+GET {{baseUrl}}
+Content-Type: application/json
