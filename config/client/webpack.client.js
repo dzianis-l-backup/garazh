@@ -1,16 +1,17 @@
-const path = require('path');
+const path = require('path')
 
 /** plugins */
-const htmlWebpackPlugin = require('./plugins/webpackHtmlPlugin.js');
-const webpackProvidePlugin = require('./plugins/webpackProvidePlugin.js');
+const htmlWebpackPlugin = require('./plugins/webpackHtmlPlugin.js')
+const webpackProvidePlugin = require('./plugins/webpackProvidePlugin.js')
+const webpackDefinePlugin = require('./plugins/webpackDefinePlugin.js')
 
-const webpackScssRule = require('./rules/webpackScssRule.js');
-const webpackJsRule = require('../common/webpackJsRule.js');
+const webpackScssRule = require('./rules/webpackScssRule.js')
+const webpackJsRule = require('../common/webpackJsRule.js')
 
 /** constants */
-const webpackClientConstants = require('./constants/webpackClientConstants.js');
+const webpackClientConstants = require('./constants/webpackClientConstants.js')
 
-const relativeDestPath = `../../${webpackClientConstants.destinationDirName}`;
+const relativeDestPath = `../../${webpackClientConstants.destinationDirName}`
 
 const clientConfig = {
     target: 'web',
@@ -26,7 +27,7 @@ const clientConfig = {
     module: {
         rules: [webpackJsRule, webpackScssRule],
     },
-    plugins: [htmlWebpackPlugin, webpackProvidePlugin],
+    plugins: [htmlWebpackPlugin, webpackProvidePlugin, webpackDefinePlugin],
     devServer: {
         contentBase: path.join(__dirname, relativeDestPath),
         watchContentBase: true,
@@ -53,10 +54,8 @@ const clientConfig = {
                 __dirname,
                 '../../src/client/components/components.js',
             ),
-            Redux: 'redux',
-            ReactRedux: 'react-redux',
         },
     },
-};
+}
 
-module.exports = clientConfig;
+module.exports = clientConfig

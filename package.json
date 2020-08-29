@@ -37,6 +37,7 @@
         "mini-css-extract-plugin": "^0.4.5",
         "node-sass": "^4.12.0",
         "nodemon": "^1.18.10",
+        "redux-devtools-extension": "^2.13.8",
         "sass-loader": "^7.1.0",
         "scss-loader": "0.0.1",
         "style-loader": "^0.23.1",
@@ -45,7 +46,8 @@
         "webpack-node-externals": "^1.7.2"
     },
     "scripts": {
-        "start": "npm run dev-server",
+        "start": "npm run client && npm run server",
+        "client": "npm run dev-server",
         "dev-server": "webpack-dev-server --config ./config/client/webpack.client.js",
         "server": "npm run compile-server && npm run run-server",
         "compile-server": "webpack --mode=development ./config/server/webpack.server.js --watch",

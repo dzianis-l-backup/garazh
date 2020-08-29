@@ -1,3 +1,13 @@
-import Root from './reduxTodos/reduxReddit/containers/root.js'
+import {
+    HashRouter as Router,
 
-ReactDOM.render(<Root />, document.getElementById('_app'))
+} from 'react-router-dom'
+import App from './app/app.js'
+
+const renderElement = (
+    <Router>
+        <App basename="" hashType="noslash" />
+    </Router>
+)
+
+ReactDOM.render(renderElement, document.getElementById('_app'))

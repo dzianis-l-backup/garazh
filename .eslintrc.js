@@ -1,5 +1,3 @@
-
-
 module.exports = {
     env: {
         browser: true,
@@ -7,9 +5,10 @@ module.exports = {
     },
     extends: ["plugin:react/recommended", "airbnb"],
     globals: {
-        React: true,
-        ReactDOM: true,
-        Redux: true,
+        React: false,
+        ReactDOM: false,
+        Redux: false,
+        PropTypes: false, // turns the global variable check off
     },
     parserOptions: {
         ecmaFeatures: {
@@ -37,7 +36,7 @@ module.exports = {
            }],
         'no-plusplus': 'off',
         "react/prefer-stateless-function": [0],
-        "react/destructuring-assignment": [0, 'always']
-
+        "react/destructuring-assignment": [0, 'always'],
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": false, "peerDependencies": false}]
     },
 };
