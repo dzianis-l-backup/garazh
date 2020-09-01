@@ -1,9 +1,9 @@
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import TodoAdd from './todoAdd.js'
+import TodoAddContainer from './todoAddContainer.js'
 import TodoInputContainer from './todoInputContainer.js'
-import TodoList from './todoList.js'
+import TodoListContainer from './todoListContainer.js'
 import reducers from './reducers.js'
 import { ENV } from './constants.js'
 
@@ -19,8 +19,8 @@ export default function TodoContainer() {
         <Provider store={store}>
             <>
                 <TodoInputContainer />
-                <TodoAdd />
-                <TodoList />
+                <TodoAddContainer />
+                <TodoListContainer />
             </>
         </Provider>
     )

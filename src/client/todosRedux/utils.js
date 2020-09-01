@@ -1,3 +1,5 @@
+import { STATUSES } from './constants'
+
 export function compose(...args) {
     if (args.length === 0) {
         throw new Error('in compose: number of arguments')
@@ -28,4 +30,16 @@ export function composeReducers(...fns) {
     return function composed(state, action) {
         return fns.reduceRight((acc, fn) => fn(acc, action), state)
     }
+}
+
+export function inverseStatus(status) {
+    if (status === STATUSES.TODO) {
+        return STATUSES.DONE
+    }
+
+    if (status === STATUSES.DONE) {
+        return STATUSES.TODO
+    }
+
+    return status
 }

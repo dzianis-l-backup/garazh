@@ -1,5 +1,6 @@
 export const ADD_TODO = 'ADD_TODO'
 export const CHANGE_TODO_TEXT = 'CHANGE_TODO_TEXT'
+export const TOGGLE_STATUS = 'TOGGLE_STATUS'
 
 export default class Action {
     static makeAction(plainAction) {
