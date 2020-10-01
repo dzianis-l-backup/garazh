@@ -12,7 +12,7 @@ const defaultProps = {
 export default function TodoList(props) {
     const { todos, toggleStatus } = props
     const toggleStatusTodo = React.useCallback(
-        (todo) => function toggleStatusTodoClb() {
+        (todo) => function toggleStatusTodoClb(event) {
             toggleStatus(todo.id, todo.status)
         }, [toggleStatus],
     )
@@ -26,7 +26,7 @@ export default function TodoList(props) {
                 tabIndex={0}
                 aria-checked={todo.status === STATUSES.DONE}
                 onClick={toggleStatusTodo(todo)}
-                onKeyDown={toggleStatusTodo(todo)}
+                onKeyPress={toggleStatusTodo(todo)}
                 style={{ textDecoration: todo.status === STATUSES.DONE ? 'line-through' : '' }}
             >
                 {todo.text}

@@ -1,4 +1,6 @@
-import Action, { ADD_TODO, CHANGE_TODO_TEXT, TOGGLE_STATUS } from './action.js'
+import Action, {
+    ADD_TODO, CHANGE_TODO_TEXT, TOGGLE_STATUS, LOAD_START, LOAD_END,
+} from './action.js'
 import { STATUSES } from './constants.js'
 import { composeReducers, inverseStatus } from './utils.js'
 
@@ -44,10 +46,25 @@ function reducerToggleStatus(prevState, plainAction) {
     return prevState
 }
 
+function reducerLoad(state, plainAction) {
+    const action = Action.makeAction(plainAction)
+
+    if (action.getType() === LOAD_START) {
+        return { isLoading: true }
+    }
+
+    if (action.getType() === LOAD_END) {
+        return { isLoading: false, loaded: action.getPayload() }
+    }
+
+    return state
+}
+
 export default function reducers(state, action) {
     return composeReducers(
         reducerChangeTodoText,
         reducerAddTodo,
         reducerToggleStatus,
+        reducerLoad,
     )(state, action)
 }

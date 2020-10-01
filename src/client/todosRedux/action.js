@@ -1,6 +1,8 @@
 export const ADD_TODO = 'ADD_TODO'
 export const CHANGE_TODO_TEXT = 'CHANGE_TODO_TEXT'
 export const TOGGLE_STATUS = 'TOGGLE_STATUS'
+export const LOAD_START = 'LOAD_START'
+export const LOAD_END = 'LOAD_END'
 
 export default class Action {
     static makeAction(plainAction) {
@@ -37,5 +39,15 @@ export default class Action {
 
             return acc
         }, {})
+    }
+
+    setPayload(payload) {
+        this.add('payload', payload)
+
+        return this
+    }
+
+    getPayload() {
+        return this.get('payload')
     }
 }
