@@ -1,9 +1,22 @@
 import { connect } from 'react-redux'
 import TodoList from './todoList.js'
-import Action, { TOGGLE_STATUS } from './action.js'
+import Action, { TOGGLE_STATUS, FILTER_UNDONE, FILTER_COMPLETED } from './action.js'
+import { STATUSES } from './constants.js'
 
-function mapStateToProps(state) {
-    return { todos: state.todos }
+function mapStateToProps({ filter, todos }) {
+    return {
+        todos: (todos || []).filter(({ status }) => {
+            if (filter === FILTER_COMPLETED) {
+                return status === STATUSES.DONE
+            }
+
+            if (filter === FILTER_UNDONE) {
+                return status === STATUSES.TODO
+            }
+
+            return true
+        }),
+    }
 }
 
 function createActionToggleStatus(id, status) {

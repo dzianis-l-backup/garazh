@@ -1,5 +1,6 @@
 import Action, {
-    ADD_TODO, CHANGE_TODO_TEXT, TOGGLE_STATUS, LOAD_START, LOAD_END,
+    ADD_TODO,
+    CHANGE_TODO_TEXT, TOGGLE_STATUS, LOAD_START, LOAD_END, FILTER_UNDONE, FILTER_COMPLETED,
 } from './action.js'
 import { STATUSES } from './constants.js'
 import { composeReducers, inverseStatus } from './utils.js'
@@ -60,11 +61,26 @@ function reducerLoad(state, plainAction) {
     return state
 }
 
+
+function reducerFilter(state, plainAction) {
+    const action = Action.makeAction(plainAction)
+
+    if (FILTER_UNDONE === action.getType() || FILTER_COMPLETED === action.getType()) {
+        return {
+            ...state,
+            filter: action.getType(),
+        }
+    }
+
+    return state
+}
+
 export default function reducers(state, action) {
     return composeReducers(
         reducerChangeTodoText,
         reducerAddTodo,
         reducerToggleStatus,
         reducerLoad,
+        reducerFilter,
     )(state, action)
 }

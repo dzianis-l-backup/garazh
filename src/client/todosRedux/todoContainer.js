@@ -4,7 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import TodoAddContainer from './todoAddContainer.js'
 import TodoInputContainer from './todoInputContainer.js'
 import TodoListContainer from './todoListContainer.js'
-import TodoLoadContainer from './todoLoadContainer.js'
+import TodoFilters from './todoFilters.js'
 import reducers from './reducers.js'
 import { ENV } from './constants.js'
 
@@ -21,7 +21,7 @@ export default function TodoContainer() {
             <>
                 <TodoInputContainer />
                 <TodoAddContainer />
-                <TodoLoadContainer />
+                <TodoFilters />
                 <TodoListContainer />
             </>
         </Provider>

@@ -3,6 +3,8 @@ export const CHANGE_TODO_TEXT = 'CHANGE_TODO_TEXT'
 export const TOGGLE_STATUS = 'TOGGLE_STATUS'
 export const LOAD_START = 'LOAD_START'
 export const LOAD_END = 'LOAD_END'
+export const FILTER_UNDONE = 'FILTER_UNDONE'
+export const FILTER_COMPLETED = 'FILTER_COMPLETED'
 
 export default class Action {
     static makeAction(plainAction) {

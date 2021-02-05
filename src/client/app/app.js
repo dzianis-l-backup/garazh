@@ -1,4 +1,4 @@
-import './_app.scss'
+import './app.scss'
 import {
     Switch,
     Route,

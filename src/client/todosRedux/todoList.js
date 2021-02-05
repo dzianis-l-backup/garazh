@@ -19,9 +19,9 @@ export default function TodoList(props) {
     const renderTodoFn = React.useCallback((todo) => (
         <li
             key={todo.id}
-            style={{ listStyleType: 'none' }}
+            style={{ listStyleType: 'none', display: 'block' }}
         >
-            <div
+            <span
                 role="switch"
                 tabIndex={0}
                 aria-checked={todo.status === STATUSES.DONE}
@@ -30,7 +30,7 @@ export default function TodoList(props) {
                 style={{ textDecoration: todo.status === STATUSES.DONE ? 'line-through' : '' }}
             >
                 {todo.text}
-            </div>
+            </span>
         </li>
     ), [toggleStatusTodo])
 
